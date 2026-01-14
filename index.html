@@ -3,60 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bob's Bar | The Soul of Bangalore</title>
-    <meta name="description" content="Bob's Bar Indiranagar: A tribute to Old Bangalore. Local cuisine, draught beer, and the unmistakable vibe of the Ooru.">
+    <title>Bob's Bar | The Royal Experience</title>
+    <meta name="description" content="Bob's Bar Indiranagar: Where Old Bangalore meets Royal Hospitality.">
     
-    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Courier+Prime:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --oxide-red: #A63C3C;   /* The iconic floor color */
-            --paper-bg: #E6E0D4;    /* Darker, richer parchment */
-            --ink-black: #121212;
-            --faded-ink: #3D3D3D;
-            --wood: #5D4037;
-            --gold-accent: #C5A059;
+            --royal-gold: #D4AF37;
+            --royal-dark: #0f0f0f;
+            --deep-maroon: #2b0c0c;
+            --text-light: #E0E0E0;
+            --glass: rgba(20, 20, 20, 0.85);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: var(--paper-bg);
-            color: var(--ink-black);
-            font-family: 'DM Sans', sans-serif;
-            line-height: 1.6;
+            background-color: var(--royal-dark);
+            color: var(--text-light);
+            font-family: 'Lato', sans-serif;
+            line-height: 1.7;
             overflow-x: hidden;
-            /* Added a subtle texture to make it look like expensive paper/wall */
-            background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
+            /* NIGHTLIFE VIBE: Subtle spotlight gradient background (No external image to break) */
+            background: radial-gradient(circle at 50% 0%, #2b1d1d 0%, #0a0a0a 80%);
+            min-height: 100vh;
         }
 
         /* TYPOGRAPHY */
-        h1, h2, h3, .serif { font-family: 'Prata', serif; font-weight: 400; }
-        .mono { font-family: 'Courier Prime', monospace; }
+        h1, h2, h3 { 
+            font-family: 'Cinzel', serif; 
+            color: var(--royal-gold); 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+        }
 
         /* UTILS */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .text-red { color: var(--oxide-red); }
-        .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
         .visible { opacity: 1; transform: translateY(0); }
-        
+        .text-gold { color: var(--royal-gold); }
+
+        /* BUTTONS */
         .btn { 
             display: inline-block; 
-            padding: 12px 32px; 
-            border: 1px solid var(--ink-black); 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-            color: var(--ink-black); 
+            padding: 14px 36px; 
+            border: 1px solid var(--royal-gold); 
+            color: var(--royal-gold); 
             text-decoration: none; 
-            transition: 0.3s; 
-            position: relative; 
-            overflow: hidden;
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            transition: 0.4s;
             background: transparent;
+            font-size: 0.85rem;
         }
-        .btn:hover { background: var(--oxide-red); color: #fff; border-color: var(--oxide-red); }
+        .btn:hover { 
+            background: var(--royal-gold); 
+            color: #000; 
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
 
         /* NAV */
         nav {
@@ -64,15 +71,16 @@
             top: 0;
             width: 100%;
             padding: 20px 0;
-            background: rgba(230, 224, 212, 0.95); /* Matches new bg */
+            background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Prata', serif; font-size: 1.8rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; border: 2px solid var(--ink-black); padding: 5px 15px; }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.8rem; font-weight: 700; color: #fff; }
+        .logo span { color: var(--royal-gold); }
 
-        /* HERO - Editorial Style */
+        /* HERO */
         .hero {
             height: 100vh;
             display: flex;
@@ -80,147 +88,78 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            padding-top: 80px;
         }
-        
-        .hero-bg-img {
+
+        /* Background image with dark overlay for readability */
+        .hero-bg {
             position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            height: 80%;
-            object-fit: cover;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Reliable Unsplash Image */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
             z-index: -1;
-            filter: sepia(30%) contrast(1.1) brightness(0.9);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            filter: contrast(1.1);
         }
 
-        .hero-overlay {
-            background: rgba(230, 224, 212, 0.9);
+        .hero-content {
+            border: 1px solid rgba(212, 175, 55, 0.3);
             padding: 60px;
-            max-width: 700px;
-            border: 1px solid var(--ink-black);
-            box-shadow: 15px 15px 0px var(--oxide-red);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            max-width: 800px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
 
-        .hero h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1; margin-bottom: 20px; }
-        .hero p { font-size: 1.1rem; color: var(--faded-ink); margin-bottom: 30px; font-weight: 500; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; text-shadow: 0 5px 15px #000; }
+        .hero p { font-size: 1.2rem; color: #ddd; margin-bottom: 40px; font-weight: 300; letter-spacing: 1px; }
 
-        /* ABOUT - Split Layout */
-        .about { padding: 120px 0; }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        /* SECTIONS */
+        section { padding: 100px 0; border-bottom: 1px solid #1a1a1a; }
         
-        .about-img-container { 
-            position: relative; 
-            padding: 20px;
-            border: 1px solid var(--ink-black);
-        }
-        
-        /* Updated Image Source */
-        .about-img { 
-            width: 100%; 
-            height: 500px; 
-            object-fit: cover; 
-            display: block; 
-            filter: sepia(20%); 
-            transition: 0.5s; 
-        }
-        .about-img:hover { filter: sepia(0%); }
-        
-        .stamp {
-            position: absolute;
-            bottom: -40px;
-            right: -40px;
-            background: var(--oxide-red);
-            color: white;
-            padding: 20px;
-            border-radius: 50%;
-            width: 130px;
-            height: 130px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.8rem;
-            transform: rotate(-15deg);
-            z-index: 2;
-            border: 2px solid #fff;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header h2 { font-size: 3rem; margin-bottom: 15px; }
+        .section-header p { color: #888; font-style: italic; font-family: 'Cinzel', serif; }
 
-        /* MENU - Dark Contrast Section */
-        .menu-section { 
-            background: var(--ink-black); 
-            color: #E6E0D4; 
-            padding: 120px 0; 
+        /* MENU - Royal Grid */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        
+        .menu-card {
+            background: #111;
+            padding: 40px;
+            border: 1px solid #222;
+            transition: 0.4s;
             position: relative;
         }
-        
-        .menu-header { text-align: center; margin-bottom: 80px; }
-        .menu-header h2 { font-size: 3.5rem; color: #fff; }
-        .menu-header p { color: #888; }
-        
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; }
-        
-        .menu-cat h3 { 
-            font-family: 'Courier Prime', monospace; 
-            font-size: 1.2rem; 
-            text-transform: uppercase; 
-            color: var(--oxide-red);
-            border-bottom: 1px solid #333; 
-            display: block; 
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-        }
+        .menu-card:hover { border-color: var(--royal-gold); transform: translateY(-5px); }
+        .menu-card h3 { font-size: 1.5rem; margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 10px; display: inline-block; }
 
-        .menu-item { margin-bottom: 25px; border-bottom: 1px dashed #333; padding-bottom: 15px; }
-        .menu-row { display: flex; justify-content: space-between; align-items: baseline; }
-        .item-name { font-family: 'Prata', serif; font-size: 1.3rem; font-weight: 400; color: #fff; }
-        .item-price { font-family: 'Courier Prime', monospace; font-weight: 700; color: var(--oxide-red); }
-        .item-desc { font-size: 0.9rem; color: #888; margin-top: 5px; font-style: italic; }
+        .menu-item { display: flex; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px dashed #333; padding-bottom: 10px; }
+        .menu-item:last-child { border-bottom: none; }
+        
+        .item-info strong { color: #fff; display: block; font-size: 1.1rem; }
+        .item-info span { font-size: 0.85rem; color: #888; }
+        .price { color: var(--royal-gold); font-weight: 700; font-family: 'Cinzel', serif; }
 
-        /* VIBE / TESTIMONIAL */
-        .vibe { padding: 120px 0; text-align: center; background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png"); }
-        .quote-box { max-width: 800px; margin: 0 auto; border: 1px solid var(--ink-black); padding: 60px; position: relative; }
-        .quote-box::before { content: '“'; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); font-size: 5rem; background: var(--paper-bg); padding: 0 20px; font-family: serif; color: var(--oxide-red); }
-        .quote { font-size: 2rem; line-height: 1.4; font-family: 'Prata', serif; margin-bottom: 30px; }
-        .author { font-family: 'Courier Prime', monospace; text-transform: uppercase; color: var(--oxide-red); letter-spacing: 2px; }
-
+        /* ABOUT - Dark & Moody */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        
+        .about-img-box { position: relative; padding: 15px; border: 1px solid var(--royal-gold); }
+        .about-img { width: 100%; display: block; filter: grayscale(20%); }
+        
         /* FOOTER */
-        footer { 
-            background: #0a0a0a; 
-            color: var(--paper-bg); 
-            padding: 80px 0; 
-            text-align: center; 
-            border-top: 5px solid var(--oxide-red);
-        }
-        .footer-logo { font-size: 3rem; font-family: 'Prata', serif; margin-bottom: 40px; display: inline-block; }
-        .footer-info p { margin-bottom: 10px; font-size: 1.1rem; color: #888; }
-        .footer-info strong { color: #fff; }
-        .footer-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 40px;
-            border: 1px solid #fff;
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-        .footer-btn:hover { background: #fff; color: #000; }
+        footer { background: #050505; padding: 80px 0; text-align: center; border-top: 3px solid var(--royal-gold); }
+        .footer-logo { font-size: 2.5rem; font-family: 'Cinzel', serif; color: #fff; margin-bottom: 30px; display: inline-block; }
+        .footer-contact { color: #999; font-size: 1.1rem; line-height: 2; margin-bottom: 40px; }
+        .footer-contact i { color: var(--royal-gold); margin-right: 10px; }
 
         /* MOBILE */
         @media (max-width: 768px) {
-            .hero-bg-img { width: 100%; height: 100%; top: 0; left: 0; transform: none; border-radius: 0; }
-            .hero-overlay { width: 90%; padding: 30px; margin: 0 auto; box-shadow: 10px 10px 0 var(--oxide-red); }
-            .about-grid { grid-template-columns: 1fr; gap: 40px; }
-            .about-img { height: 300px; }
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
             .menu-grid { grid-template-columns: 1fr; }
-            .logo { font-size: 1.5rem; }
-            .hero h1 { font-size: 2.8rem; }
+            .hero-content { padding: 30px; width: 90%; }
         }
     </style>
 </head>
@@ -228,147 +167,141 @@
 
     <nav>
         <div class="container nav-content">
-            <div class="logo">BOB'S BAR</div>
-            <a href="https://bobsbarbyg.orderhere.io/" target="_blank" class="btn">Order Delivery</a>
+            <div class="logo">BOB'S <span>BAR</span></div>
+            <a href="https://bobsbarbyg.orderhere.io/" target="_blank" class="btn" style="padding: 10px 20px; font-size: 0.7rem;">Delivery</a>
         </div>
     </nav>
 
     <header class="hero">
-        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1920&auto=format&fit=crop" class="hero-bg-img" alt="Bob's Bar Ambience">
-        
-        <div class="hero-overlay fade-in">
-            <p class="mono text-red">EST. BANGALORE</p>
-            <h1>Local Spirit.<br>Honest Food.</h1>
-            <p>No frills. No fuss. Just the good old Ooru vibe served on a red oxide floor.</p>
-            <div style="margin-top: 30px;">
-                <a href="#menu" class="btn">View The Board</a>
+        <div class="hero-bg"></div>
+        <div class="hero-content fade-in">
+            <h1>The Soul of<br>Bangalore</h1>
+            <p>EST. INDIRANAGAR • CANTONMENT STYLE</p>
+            <div style="margin-top: 20px;">
+                <a href="#menu" class="btn">Explore Menu</a>
             </div>
         </div>
     </header>
 
-    <section class="about" id="story">
+    <section id="story">
         <div class="container">
             <div class="about-grid">
-                <div class="fade-in">
-                    <h2 style="font-size: 3rem; margin-bottom: 20px;">A Love Letter<br>to the Cantonment.</h2>
-                    <p class="mono" style="margin-bottom: 20px; color: var(--wood);">"We don't do fancy. We do tasty."</p>
-                    <p style="margin-bottom: 20px;">
-                        Bob's isn't trying to be the loudest pub in Indiranagar. We are a tribute to the Bangalore of yesterday—the Pensioner's Paradise. 
+                <div class="about-text fade-in">
+                    <div class="section-header" style="text-align: left; margin-bottom: 30px;">
+                        <p class="text-gold">OUR LEGACY</p>
+                        <h2>Not Just A Bar.<br>An Institution.</h2>
+                    </div>
+                    <p style="color: #aaa; margin-bottom: 20px;">
+                        Bob's Bar is a tribute to the Bangalore of yesterday. We stripped away the pretense to bring you back to the basics: <strong style="color:#fff">Great conversation, cold draught beer, and food that touches the soul.</strong>
                     </p>
-                    <p>
-                        Think ceiling fans spinning lazily, the smell of Ghee Roast in the air, cold draught beer in your hand, and conversations that last for hours. We are the local bar you can bring your family to.
+                    <p style="color: #aaa;">
+                        With our signature red oxide floors and open balconies, we serve a slice of history with every drink. Welcome to the Royal Experience.
                     </p>
                 </div>
-                <div class="about-img-container fade-in">
-                    <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=1000&auto=format&fit=crop" class="about-img" alt="Local Cuisine">
-                    <div class="stamp">
-                        PURE<br>LOCAL<br>SOUL
-                    </div>
+                <div class="about-img-box fade-in">
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop" class="about-img" alt="Bob's Bar Mood">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="menu-section" id="menu">
+    <section id="menu" style="background: #0b0b0b;">
         <div class="container">
-            <div class="menu-header fade-in">
-                <p class="mono text-red">TOUCHINGS & TIFFINS</p>
-                <h2>From The Kitchen</h2>
-                <p>Featuring our famous "Half-Plates" so you can taste a little bit of everything.</p>
+            <div class="section-header fade-in">
+                <p class="text-gold">CURATED SELECTIONS</p>
+                <h2>Touchings & Tiffins</h2>
             </div>
-
+            
             <div class="menu-grid">
-                <div class="menu-cat fade-in">
-                    <h3>Short Eats</h3>
-                    
+                <div class="menu-card fade-in">
+                    <h3>Signature Eats</h3>
                     <div class="menu-item">
-                        <div class="menu-row">
-                            <span class="item-name">Chicken Ghee Roast</span>
-                            <span class="item-price">₹280</span>
+                        <div class="item-info">
+                            <strong>Chicken Ghee Roast</strong>
+                            <span>Mangalore style, pure ghee</span>
                         </div>
-                        <p class="item-desc">Mangalore style, roasted in pure ghee and byadgi chillies.</p>
+                        <div class="price">₹280</div>
                     </div>
-
                     <div class="menu-item">
-                        <div class="menu-row">
-                            <span class="item-name">Pandi Curry</span>
-                            <span class="item-price">₹310</span>
+                        <div class="item-info">
+                            <strong>Pandi Curry</strong>
+                            <span>Coorg special pork</span>
                         </div>
-                        <p class="item-desc">Coorg special pork curry with kachampuli vinegar.</p>
+                        <div class="price">₹310</div>
                     </div>
-
                     <div class="menu-item">
-                        <div class="menu-row">
-                            <span class="item-name">Egg Bhurji</span>
-                            <span class="item-price">₹140</span>
+                        <div class="item-info">
+                            <strong>Mutton Chops</strong>
+                            <span>Green masala gravy</span>
                         </div>
-                        <p class="item-desc">Street style scrambled eggs with onions and green chilies.</p>
+                        <div class="price">₹360</div>
                     </div>
-
                     <div class="menu-item">
-                        <div class="menu-row">
-                            <span class="item-name">Mutton Chops</span>
-                            <span class="item-price">₹360</span>
+                        <div class="item-info">
+                            <strong>Egg Bhurji</strong>
+                            <span>Street style scrambled</span>
                         </div>
-                        <p class="item-desc">Tender chops cooked in a green masala gravy.</p>
+                        <div class="price">₹140</div>
                     </div>
                 </div>
 
-                <div class="menu-cat fade-in">
-                    <h3>Mains & Pours</h3>
-                    
+                <div class="menu-card fade-in">
+                    <h3>The Bar</h3>
                     <div class="menu-item">
-                        <div class="menu-row">
-                            <span class="item-name">Donne Biryani</span>
-                            <span class="item-price">₹290</span>
+                        <div class="item-info">
+                            <strong>Draught Beer</strong>
+                            <span>Chilled Mug (500ml)</span>
                         </div>
-                        <p class="item-desc">The classic military hotel style biryani (Chicken/Mutton).</p>
+                        <div class="price">₹160</div>
                     </div>
-
                     <div class="menu-item">
-                        <div class="menu-row">
-                            <span class="item-name">Neer Dosa & Curry</span>
-                            <span class="item-price">₹220</span>
+                        <div class="item-info">
+                            <strong>Old Monk</strong>
+                            <span>The Legend (60ml)</span>
                         </div>
-                        <p class="item-desc">Soft rice crepes served with chicken curry.</p>
+                        <div class="price">₹140</div>
                     </div>
-
                     <div class="menu-item">
-                        <div class="menu-row">
-                            <span class="item-name">Draught Beer (Mug)</span>
-                            <span class="item-price">₹160</span>
+                        <div class="item-info">
+                            <strong>Gin & Tonic</strong>
+                            <span>Classic pour</span>
                         </div>
-                        <p class="item-desc">Ice cold. The way it should be.</p>
+                        <div class="price">₹220</div>
                     </div>
-
                     <div class="menu-item">
-                        <div class="menu-row">
-                            <span class="item-name">Old Monk (60ml)</span>
-                            <span class="item-price">₹140</span>
+                        <div class="item-info">
+                            <strong>Mysore Special</strong>
+                            <span>Whisky sour twist</span>
                         </div>
-                        <p class="item-desc">The legendary rum. Best enjoyed with Thums Up.</p>
+                        <div class="price">₹280</div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="vibe">
-        <div class="container fade-in">
-            <div class="quote-box">
-                <p class="quote">"It's not just a bar. It's a time machine with better food."</p>
-                <p class="author">— A Happy Regular</p>
             </div>
         </div>
     </section>
 
     <footer id="contact">
-        <div class="container">
+        <div class="container fade-in">
             <div class="footer-logo">BOB'S BAR</div>
-            
-            <div class="footer-info">
-                <p><strong>INDIRANAGAR</strong></p>
-                <p>777/I, 100 Feet Rd, HAL 2nd Stage, Doopanahalli</p>
-                <p>Bengaluru, Karnataka 560008</p>
-                <br>
-                <p><strong>HOURS</strong></
+            <div class="footer-contact">
+                <p><i class="fas fa-map-marker-alt"></i> 777/I, 100 Feet Rd, Indiranagar, Bangalore</p>
+                <p><i class="fas fa-clock"></i> Open Daily: 11:30 AM – 1:00 AM</p>
+            </div>
+            <a href="https://goo.gl/maps/YOUR_PLACE_ID" class="btn">Get Directions</a>
+            <p style="margin-top: 50px; font-size: 0.7rem; color: #444; text-transform: uppercase; letter-spacing: 2px;">© 2026 Bob's Bar Indiranagar</p>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
