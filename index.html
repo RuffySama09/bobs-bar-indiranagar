@@ -14,7 +14,6 @@
             --paper-bg: #F4F1EA;    /* Vintage Paper */
             --ink-black: #1A1A1A;
             --faded-ink: #4A4A4A;
-            --gold-accent: #C5A059;
             --wood: #5D4037;
         }
 
@@ -67,7 +66,6 @@
             padding-top: 80px;
         }
         
-        /* The image is framed like a polaroid/newspaper photo */
         .hero-bg-img {
             position: absolute;
             top: 50%; left: 50%;
@@ -81,11 +79,11 @@
         }
 
         .hero-overlay {
-            background: rgba(244, 241, 234, 0.85); /* Box in the middle */
+            background: rgba(244, 241, 234, 0.9);
             padding: 60px;
             max-width: 700px;
             border: 1px solid var(--ink-black);
-            box-shadow: 10px 10px 0px var(--oxide-red); /* Graphic Offset Shadow */
+            box-shadow: 10px 10px 0px var(--oxide-red);
         }
 
         .hero h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1; margin-bottom: 20px; }
@@ -95,8 +93,11 @@
         .about { padding: 120px 0; }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
         .about-img-container { position: relative; }
-        .about-img { width: 100%; display: block; filter: grayscale(100%); transition: 0.5s; border: 1px solid var(--ink-black); }
-        .about-img:hover { filter: grayscale(0%); }
+        
+        /* Fixed: Reliable Image Source */
+        .about-img { width: 100%; height: 500px; object-fit: cover; display: block; filter: sepia(30%) contrast(1.1); transition: 0.5s; border: 1px solid var(--ink-black); }
+        .about-img:hover { filter: sepia(0%); }
+        
         .stamp {
             position: absolute;
             bottom: -30px;
@@ -114,6 +115,7 @@
             font-family: 'Courier Prime', monospace;
             font-size: 0.8rem;
             transform: rotate(-15deg);
+            z-index: 2;
         }
 
         /* MENU - Newspaper Columns */
@@ -161,6 +163,7 @@
             .hero-bg-img { width: 100%; height: 100%; top: 0; left: 0; transform: none; }
             .hero-overlay { width: 90%; padding: 30px; margin: 0 auto; box-shadow: none; background: rgba(244, 241, 234, 0.95); }
             .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-img { height: 300px; }
             .menu-grid { grid-template-columns: 1fr; }
             .logo { font-size: 1.5rem; }
             .hero h1 { font-size: 2.5rem; }
@@ -203,7 +206,7 @@
                     </p>
                 </div>
                 <div class="about-img-container fade-in">
-                    <img src="https://images.unsplash.com/photo-1606822363102-3d8434914a0e?q=80&w=1000&auto=format&fit=crop" class="about-img" alt="Local Cuisine">
+                    <img src="https://images.unsplash.com/photo-1610192244261-3f33de3f55e0?q=80&w=1000&auto=format&fit=crop" class="about-img" alt="Local Cuisine">
                     <div class="stamp">
                         PURE<br>LOCAL<br>SOUL
                     </div>
@@ -318,7 +321,7 @@
                 <p>Mon - Sun: 11:30 AM – 1:00 AM</p>
                 <br>
                 <div style="margin-top: 30px;">
-                    <a href="https://goo.gl/maps/YOUR_MAP_LINK" class="btn" style="color: #fff; border-color: #fff;">Get Directions</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Bob's+Bar+Indiranagar+100+Feet+Rd" target="_blank" class="btn" style="color: #fff; border-color: #fff;">Get Directions</a>
                 </div>
             </div>
             
