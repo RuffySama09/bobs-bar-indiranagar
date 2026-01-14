@@ -7,14 +7,16 @@
     <meta name="description" content="Bob's Bar Indiranagar: A tribute to Old Bangalore. Local cuisine, draught beer, and the unmistakable vibe of the Ooru.">
     
     <link href="https://fonts.googleapis.com/css2?family=Prata&family=Courier+Prime:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
             --oxide-red: #A63C3C;   /* The iconic floor color */
-            --paper-bg: #F4F1EA;    /* Vintage Paper */
-            --ink-black: #1A1A1A;
-            --faded-ink: #4A4A4A;
+            --paper-bg: #E6E0D4;    /* Darker, richer parchment */
+            --ink-black: #121212;
+            --faded-ink: #3D3D3D;
             --wood: #5D4037;
+            --gold-accent: #C5A059;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,8 +27,8 @@
             font-family: 'DM Sans', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
-            /* Subtle Noise Texture for Vintage Feel */
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            /* Added a subtle texture to make it look like expensive paper/wall */
+            background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
         }
 
         /* TYPOGRAPHY */
@@ -38,8 +40,23 @@
         .text-red { color: var(--oxide-red); }
         .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
         .visible { opacity: 1; transform: translateY(0); }
-        .btn { display: inline-block; padding: 12px 32px; border: 1px solid var(--ink-black); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 700; color: var(--ink-black); text-decoration: none; transition: 0.3s; position: relative; overflow: hidden; }
-        .btn:hover { background: var(--oxide-red); color: var(--paper-bg); border-color: var(--oxide-red); }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 12px 32px; 
+            border: 1px solid var(--ink-black); 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-size: 0.8rem; 
+            font-weight: 700; 
+            color: var(--ink-black); 
+            text-decoration: none; 
+            transition: 0.3s; 
+            position: relative; 
+            overflow: hidden;
+            background: transparent;
+        }
+        .btn:hover { background: var(--oxide-red); color: #fff; border-color: var(--oxide-red); }
 
         /* NAV */
         nav {
@@ -47,13 +64,13 @@
             top: 0;
             width: 100%;
             padding: 20px 0;
-            background: rgba(244, 241, 234, 0.95);
-            backdrop-filter: blur(8px);
+            background: rgba(230, 224, 212, 0.95); /* Matches new bg */
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Prata', serif; font-size: 2rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; border: 2px solid var(--ink-black); padding: 5px 15px; }
+        .logo { font-family: 'Prata', serif; font-size: 1.8rem; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; border: 2px solid var(--ink-black); padding: 5px 15px; }
 
         /* HERO - Editorial Style */
         .hero {
@@ -70,44 +87,56 @@
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 85%;
-            height: 75%;
+            width: 90%;
+            height: 80%;
             object-fit: cover;
             z-index: -1;
-            filter: sepia(20%) contrast(1.1);
-            opacity: 0.9;
+            filter: sepia(30%) contrast(1.1) brightness(0.9);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
         }
 
         .hero-overlay {
-            background: rgba(244, 241, 234, 0.9);
+            background: rgba(230, 224, 212, 0.9);
             padding: 60px;
             max-width: 700px;
             border: 1px solid var(--ink-black);
-            box-shadow: 10px 10px 0px var(--oxide-red);
+            box-shadow: 15px 15px 0px var(--oxide-red);
         }
 
         .hero h1 { font-size: clamp(3rem, 6vw, 5rem); line-height: 1; margin-bottom: 20px; }
-        .hero p { font-size: 1.1rem; color: var(--faded-ink); margin-bottom: 30px; }
+        .hero p { font-size: 1.1rem; color: var(--faded-ink); margin-bottom: 30px; font-weight: 500; }
 
         /* ABOUT - Split Layout */
         .about { padding: 120px 0; }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .about-img-container { position: relative; }
         
-        /* Fixed: Reliable Image Source */
-        .about-img { width: 100%; height: 500px; object-fit: cover; display: block; filter: sepia(30%) contrast(1.1); transition: 0.5s; border: 1px solid var(--ink-black); }
+        .about-img-container { 
+            position: relative; 
+            padding: 20px;
+            border: 1px solid var(--ink-black);
+        }
+        
+        /* Updated Image Source */
+        .about-img { 
+            width: 100%; 
+            height: 500px; 
+            object-fit: cover; 
+            display: block; 
+            filter: sepia(20%); 
+            transition: 0.5s; 
+        }
         .about-img:hover { filter: sepia(0%); }
         
         .stamp {
             position: absolute;
-            bottom: -30px;
-            right: -30px;
+            bottom: -40px;
+            right: -40px;
             background: var(--oxide-red);
             color: white;
             padding: 20px;
             border-radius: 50%;
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -116,12 +145,21 @@
             font-size: 0.8rem;
             transform: rotate(-15deg);
             z-index: 2;
+            border: 2px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* MENU - Newspaper Columns */
-        .menu-section { background: #E8E4DB; padding: 120px 0; border-top: 1px solid var(--ink-black); border-bottom: 1px solid var(--ink-black); }
+        /* MENU - Dark Contrast Section */
+        .menu-section { 
+            background: var(--ink-black); 
+            color: #E6E0D4; 
+            padding: 120px 0; 
+            position: relative;
+        }
+        
         .menu-header { text-align: center; margin-bottom: 80px; }
-        .menu-header h2 { font-size: 3.5rem; }
+        .menu-header h2 { font-size: 3.5rem; color: #fff; }
+        .menu-header p { color: #888; }
         
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; }
         
@@ -129,44 +167,60 @@
             font-family: 'Courier Prime', monospace; 
             font-size: 1.2rem; 
             text-transform: uppercase; 
-            border-bottom: 2px solid var(--oxide-red); 
-            display: inline-block; 
+            color: var(--oxide-red);
+            border-bottom: 1px solid #333; 
+            display: block; 
             margin-bottom: 30px;
-            padding-bottom: 5px;
+            padding-bottom: 10px;
         }
 
-        .menu-item { margin-bottom: 25px; border-bottom: 1px dashed #ccc; padding-bottom: 10px; }
+        .menu-item { margin-bottom: 25px; border-bottom: 1px dashed #333; padding-bottom: 15px; }
         .menu-row { display: flex; justify-content: space-between; align-items: baseline; }
-        .item-name { font-family: 'Prata', serif; font-size: 1.3rem; font-weight: 400; }
+        .item-name { font-family: 'Prata', serif; font-size: 1.3rem; font-weight: 400; color: #fff; }
         .item-price { font-family: 'Courier Prime', monospace; font-weight: 700; color: var(--oxide-red); }
-        .item-desc { font-size: 0.9rem; color: var(--faded-ink); margin-top: 5px; font-style: italic; }
+        .item-desc { font-size: 0.9rem; color: #888; margin-top: 5px; font-style: italic; }
 
         /* VIBE / TESTIMONIAL */
-        .vibe { padding: 120px 0; text-align: center; }
-        .quote-box { max-width: 800px; margin: 0 auto; }
+        .vibe { padding: 120px 0; text-align: center; background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png"); }
+        .quote-box { max-width: 800px; margin: 0 auto; border: 1px solid var(--ink-black); padding: 60px; position: relative; }
+        .quote-box::before { content: '“'; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); font-size: 5rem; background: var(--paper-bg); padding: 0 20px; font-family: serif; color: var(--oxide-red); }
         .quote { font-size: 2rem; line-height: 1.4; font-family: 'Prata', serif; margin-bottom: 30px; }
         .author { font-family: 'Courier Prime', monospace; text-transform: uppercase; color: var(--oxide-red); letter-spacing: 2px; }
 
         /* FOOTER */
         footer { 
-            background: var(--ink-black); 
+            background: #0a0a0a; 
             color: var(--paper-bg); 
             padding: 80px 0; 
             text-align: center; 
+            border-top: 5px solid var(--oxide-red);
         }
-        .footer-logo { font-size: 3rem; font-family: 'Prata', serif; margin-bottom: 40px; display: inline-block; border-bottom: 1px solid var(--oxide-red); }
-        .footer-info p { margin-bottom: 10px; font-size: 1.1rem; color: #aaa; }
+        .footer-logo { font-size: 3rem; font-family: 'Prata', serif; margin-bottom: 40px; display: inline-block; }
+        .footer-info p { margin-bottom: 10px; font-size: 1.1rem; color: #888; }
         .footer-info strong { color: #fff; }
+        .footer-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 40px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .footer-btn:hover { background: #fff; color: #000; }
 
         /* MOBILE */
         @media (max-width: 768px) {
-            .hero-bg-img { width: 100%; height: 100%; top: 0; left: 0; transform: none; }
-            .hero-overlay { width: 90%; padding: 30px; margin: 0 auto; box-shadow: none; background: rgba(244, 241, 234, 0.95); }
+            .hero-bg-img { width: 100%; height: 100%; top: 0; left: 0; transform: none; border-radius: 0; }
+            .hero-overlay { width: 90%; padding: 30px; margin: 0 auto; box-shadow: 10px 10px 0 var(--oxide-red); }
             .about-grid { grid-template-columns: 1fr; gap: 40px; }
             .about-img { height: 300px; }
             .menu-grid { grid-template-columns: 1fr; }
             .logo { font-size: 1.5rem; }
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -180,7 +234,7 @@
     </nav>
 
     <header class="hero">
-        <img src="https://images.unsplash.com/photo-1575444758702-4a6b9222336e?q=80&w=1920&auto=format&fit=crop" class="hero-bg-img" alt="Bob's Bar Ambience">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1920&auto=format&fit=crop" class="hero-bg-img" alt="Bob's Bar Ambience">
         
         <div class="hero-overlay fade-in">
             <p class="mono text-red">EST. BANGALORE</p>
@@ -206,7 +260,7 @@
                     </p>
                 </div>
                 <div class="about-img-container fade-in">
-                    <img src="https://images.unsplash.com/photo-1610192244261-3f33de3f55e0?q=80&w=1000&auto=format&fit=crop" class="about-img" alt="Local Cuisine">
+                    <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=1000&auto=format&fit=crop" class="about-img" alt="Local Cuisine">
                     <div class="stamp">
                         PURE<br>LOCAL<br>SOUL
                     </div>
@@ -220,7 +274,7 @@
             <div class="menu-header fade-in">
                 <p class="mono text-red">TOUCHINGS & TIFFINS</p>
                 <h2>From The Kitchen</h2>
-                <p style="max-width: 500px; margin: 0 auto; color: var(--faded-ink);">Featuring our famous "Half-Plates" so you can taste a little bit of everything.</p>
+                <p>Featuring our famous "Half-Plates" so you can taste a little bit of everything.</p>
             </div>
 
             <div class="menu-grid">
@@ -317,29 +371,4 @@
                 <p>777/I, 100 Feet Rd, HAL 2nd Stage, Doopanahalli</p>
                 <p>Bengaluru, Karnataka 560008</p>
                 <br>
-                <p><strong>HOURS</strong></p>
-                <p>Mon - Sun: 11:30 AM – 1:00 AM</p>
-                <br>
-                <div style="margin-top: 30px;">
-                    <a href="https://www.google.com/maps/search/?api=1&query=Bob's+Bar+Indiranagar+100+Feet+Rd" target="_blank" class="btn" style="color: #fff; border-color: #fff;">Get Directions</a>
-                </div>
-            </div>
-            
-            <p style="margin-top: 60px; font-size: 0.8rem; color: #555; font-family: 'Courier Prime', monospace;">© 2026 Bob's Bar. Namma Ooru.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Simple Intersection Observer for Fade-in Animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
-</body>
-</html>
+                <p><strong>HOURS</strong></
